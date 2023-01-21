@@ -15,9 +15,15 @@ const movies = createSlice({
     setSingleMovie: (state, { payload }) => {
       state.movie = payload;
     },
+    postMovie: () => {},
   },
 });
 
-export const { getAllMovies, setAllMovies, getSingleMovie, setSingleMovie } =
-  movies.actions;
+export const {
+  getAllMovies,
+  setAllMovies,
+  getSingleMovie,
+  setSingleMovie,
+  postMovie,
+} = movies.actions;
 export default movies.reducer;

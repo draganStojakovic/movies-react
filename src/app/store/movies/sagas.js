@@ -1,7 +1,7 @@
 import { call, put, all, fork, takeEvery } from "redux-saga/effects";
+import { movieService } from "../../services/MovieService";
 import { setAllMovies } from "./slice";
 import { setSingleMovie } from "./slice";
-import { movieService } from "../../services/MovieService";
 
 function* getMovies() {
   try {
@@ -32,14 +32,13 @@ function* getSingleMovieSagaWatcher() {
 function* submitMovie({ payload }) {
   try {
     yield call(movieService.add, payload);
-    window.location.replace(`/movies/${payload.id}`);
   } catch (err) {
     console.error(err);
   }
 }
 
 function* getSubmitMovieSagaWatcher() {
-  yield submitMovie;
+  yield takeEvery("movies/postMovie", submitMovie);
 }
 
 export default function* rootMoviesSaga() {

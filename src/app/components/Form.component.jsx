@@ -4,11 +4,12 @@ export const Form = ({
   handleGenres,
   handleResetForm,
   formTitle,
+  handleSubmit,
 }) => {
   return (
     <>
       <h1>{formTitle}</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title:</label>
         <input
           id="title"

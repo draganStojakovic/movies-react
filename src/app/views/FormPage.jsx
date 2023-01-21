@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Form } from "../components/Form.component";
+import { postMovie } from "../store/movies/slice";
+import { useHistory } from "react-router-dom";
 
 export const FormPage = () => {
   const FORM_TITLE = "Submit a Movie";
+  const history = useHistory();
   const dispatch = useDispatch();
   const [movie, setMovie] = useState({
     title: "",
@@ -48,7 +51,12 @@ export const FormPage = () => {
       alert("One or more fields are blank.");
       return;
     }
-    dispatch();
+    try {
+      dispatch(postMovie(movie));
+      history.push('/movies');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -58,6 +66,7 @@ export const FormPage = () => {
       onChange={setMovie}
       handleGenres={handleGenres}
       handleResetForm={handleResetForm}
+      handleSubmit={handleAddMovie}
     />
   );
 };
