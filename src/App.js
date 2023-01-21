@@ -1,11 +1,13 @@
-import "./App.css";
-import { MoviesPage } from "./app/views/MoviesPage";
+import Pages from "./app/layout";
+import Router from "./app/Router";
 
 function App() {
   return (
-    <div className="App">
-      <MoviesPage />
-    </div>
+    <>
+      <Pages>
+        <Router />
+      </Pages>
+    </>
   );
 }
 

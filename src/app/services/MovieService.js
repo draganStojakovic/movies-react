@@ -1,22 +1,21 @@
 import ApiService from "./ApiService";
-// import axios from "axios";
+import axios from "axios";
 
 class MovieService extends ApiService {
-  async get() {
-    return await this.client.get("/movies");
-    // return await axios.get("http://localhost:8000/api/movies");  // ne radi ni ovako
+  async getAllMovies() {
+    return await axios.get("http://localhost:8000/api/movies");
   }
   async show(id) {
-    return await this.client.get(`/movies/${id}`);
+    return await axios.get(`http://localhost:8000/api/movies/${id}`);
   }
   async add(movie) {
-    await this.client.post("/movies", movie);
+    await axios.post("http://localhost:8000/api/movies", movie);
   }
   async update(id, movie) {
-    await this.client.put(`/movies/${id}`, movie);
+    await axios.put(`http://localhost:8000/api/movies/${id}`, movie);
   }
   async delete(id) {
-    await this.client.delete(`/movies/${id}`);
+    await axios.delete(`http://localhost:8000/api/movies/${id}`);
   }
 }
 
