@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { Form } from "../components/Form.component";
 
 export const FormPage = () => {
+  const FORM_TITLE = "Submit a Movie";
   const dispatch = useDispatch();
   const [movie, setMovie] = useState({
     title: "",
     director: "",
     imageUrl: "",
     duration: 0,
-    releaseDate: null,
+    releaseDate: 0,
     genres: [],
   });
 
@@ -30,7 +31,7 @@ export const FormPage = () => {
       director: "",
       imageUrl: "",
       duration: 0,
-      releaseDate: null,
+      releaseDate: 0,
       genres: [],
     });
   };
@@ -44,7 +45,7 @@ export const FormPage = () => {
       !movie.duration ||
       !movie.releaseDate
     ) {
-      alert("Some fields are blank.");
+      alert("One or more fields are blank.");
       return;
     }
     dispatch();
@@ -52,6 +53,7 @@ export const FormPage = () => {
 
   return (
     <Form
+      formTitle={FORM_TITLE}
       movie={movie}
       onChange={setMovie}
       handleGenres={handleGenres}

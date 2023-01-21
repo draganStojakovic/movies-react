@@ -1,7 +1,13 @@
-export const Form = ({ movie, onChange, handleGenres, handleResetForm }) => {
+export const Form = ({
+  movie,
+  onChange,
+  handleGenres,
+  handleResetForm,
+  formTitle,
+}) => {
   return (
     <>
-      <h1>Submit a Movie</h1>
+      <h1>{formTitle}</h1>
       <form>
         <label htmlFor="title">Title:</label>
         <input
@@ -130,7 +136,7 @@ export const Form = ({ movie, onChange, handleGenres, handleResetForm }) => {
         <button type="submit">Submit</button>
       </form>
       <br />
-      <button onClick={() => handleResetForm()}>Reset</button>
+      <button onClick={handleResetForm}>Reset</button>
     </>
   );
 };
